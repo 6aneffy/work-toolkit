@@ -1,0 +1,103 @@
+:root {
+  --bg: #f3f4f6;
+  --panel: #ffffff;
+  --border: #d1d5db;
+  --border-strong: #9ca3af;
+  --text: #1f2937;
+  --text-muted: #6b7280;
+  --text-subtle: #9ca3af;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-soft: #dbeafe;
+  --error: #dc2626;
+  --error-soft: #fee2e2;
+  --success: #15803d;
+  --row-active: #f8fafc;
+  --header-bg: #f9fafb;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --radius: 4px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
+    "Apple SD Gothic Neo", "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+kbd {
+  display: inline-block;
+  padding: 1px 5px;
+  margin: 0 1px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--text-muted);
+}
+
+/* Shared button */
+.wb-btn {
+  padding: 5px 12px;
+  font-size: 12px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  border-radius: var(--radius);
+  color: var(--text);
+}
+
+.wb-btn:hover:not(:disabled) {
+  border-color: var(--border-strong);
+}
+
+.wb-btn:disabled {
+  color: var(--text-subtle);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.wb-btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.wb-btn--primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.wb-btn--ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-muted);
+}
+
+.wb-btn--ghost:hover:not(:disabled) {
+  background: var(--header-bg);
+  border-color: var(--border);
+}

@@ -1,0 +1,193 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: var(--bg);
+}
+
+.main {
+  flex: 1;
+  padding: 14px 16px 0;
+  overflow: auto;
+}
+
+/* Hint bar: Tab 이동 | Enter 아래 이동 | Ctrl+/ 문장 변환 */
+.hint {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px 14px;
+  color: var(--text-subtle);
+  font-size: 11px;
+  background: var(--bg);
+  flex-wrap: wrap;
+}
+
+.hintItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.hintItem kbd {
+  color: var(--text-muted);
+}
+
+.hintDivider {
+  width: 1px;
+  height: 11px;
+  background: var(--border);
+}
+
+/* ---------- Complete card ---------- */
+.complete {
+  margin-top: 14px;
+  padding: 16px 20px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--success);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  box-shadow: var(--shadow);
+}
+
+.completeWarn {
+  border-left-color: var(--error);
+}
+
+.completeHead {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 88px;
+}
+
+.completeTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--success);
+}
+
+.completeTitle::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+}
+
+/* 완료 후 오류가 남아있는 상태에서는 "오류 수정 중" 으로 표시하며
+   좌측 강조 색상과 점 인디케이터, 제목 색을 경고 색으로 바꾼다. */
+.completeTitleWarn {
+  color: var(--error);
+}
+.completeTitleWarn::before {
+  background: var(--error);
+}
+
+.completeStats {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 22px;
+  flex: 1;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.completeItem {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  padding: 2px 0;
+}
+
+.completeLabel {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.completeValue {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.completeSub {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-subtle);
+}
+
+.completeValueWarn {
+  color: var(--error);
+}
+
+.completeErrorBtn {
+  background: none;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  border-radius: var(--radius);
+}
+
+.completeErrorBtn:hover:not(:disabled) .completeValue {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.completeErrorBtn:disabled {
+  cursor: default;
+}
+
+.completeErrorBtn:focus-visible {
+  outline: 2px solid var(--accent-soft);
+  outline-offset: 2px;
+}
+
+.completeActions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 720px) {
+  .complete {
+    gap: 16px;
+    padding: 14px 16px;
+  }
+  .completeStats {
+    gap: 16px;
+  }
+  .completeActions {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 560px) {
+  .main {
+    padding: 12px 12px 0;
+  }
+  .hint {
+    padding: 10px 12px 12px;
+    gap: 8px;
+  }
+}

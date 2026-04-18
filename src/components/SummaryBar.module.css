@@ -1,0 +1,110 @@
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--panel);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.groupLeft,
+.groupRight {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.itemMuted .value {
+  color: var(--text-muted);
+}
+
+.label {
+  color: var(--text-muted);
+}
+
+.value {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.valueWarn {
+  color: var(--error);
+}
+
+.divider {
+  width: 1px;
+  height: 12px;
+  background: var(--border);
+}
+
+.errorAction {
+  background: none;
+  border: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+}
+
+.errorAction .value {
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+.errorAction:hover:not(:disabled) .value,
+.errorAction:focus-visible .value {
+  text-decoration: underline;
+}
+
+.errorAction:disabled {
+  cursor: default;
+}
+
+.errorAction:focus-visible {
+  outline: 2px solid var(--accent-soft);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* 피드백 텍스트 링크 */
+.feedbackLink {
+  color: var(--text-muted);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.feedbackLink:hover,
+.feedbackLink:focus-visible {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.feedbackLink:focus-visible {
+  outline: none;
+}
+
+@media (max-width: 640px) {
+  .summary {
+    gap: 8px;
+  }
+  .groupRight {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

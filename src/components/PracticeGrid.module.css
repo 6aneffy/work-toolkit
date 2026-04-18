@@ -1,0 +1,156 @@
+.wrap {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: auto;
+  box-shadow: var(--shadow);
+  max-height: calc(100vh - 280px);
+}
+
+.grid {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: max-content;
+  min-width: 100%;
+  font-size: 13px;
+}
+
+.rownumCol {
+  width: 44px;
+}
+
+.corner,
+.colhead,
+.rowhead {
+  background: var(--header-bg);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 12px;
+  text-align: center;
+  position: sticky;
+  user-select: none;
+}
+
+.corner {
+  top: 0;
+  left: 0;
+  z-index: 3;
+  height: 44px;
+}
+
+.colhead {
+  top: 0;
+  z-index: 2;
+  padding: 4px 8px;
+  height: 44px;
+}
+
+.collabel {
+  display: block;
+  color: var(--text-subtle);
+  font-size: 10px;
+  letter-spacing: 0.5px;
+}
+
+.colname {
+  display: block;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.rowhead {
+  left: 0;
+  z-index: 1;
+  padding: 0 8px;
+  height: 32px;
+  min-width: 44px;
+}
+
+/* 행 번호는 활성 행 위치를 은은하게 안내하는 정도로만 처리 (배경 없음). */
+.rowheadActive {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Cell */
+.cell {
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+  padding: 0;
+  height: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 입력창: 실제 값. ghost 레이어 위에 떠 있어야 하므로 투명 배경 + z-index 로 올린다. */
+.input {
+  width: 100%;
+  height: 100%;
+  padding: 0 8px;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  font-variant-numeric: tabular-nums;
+  position: relative;
+  z-index: 1;
+}
+
+.input::placeholder {
+  color: var(--text-subtle);
+  opacity: 0;
+}
+
+/* Ghost 레이어: 입력값의 글자폭을 투명으로 채우고, 그 뒤 남은 정답을 연한 색으로 렌더한다.
+   input 과 동일한 font-family / font-size / padding / letter-spacing 를 상속해야 정렬이 맞는다. */
+.ghostLayer {
+  position: absolute;
+  inset: 0;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  white-space: pre;
+  overflow: hidden;
+  z-index: 0;
+  color: transparent;
+}
+
+.ghostTyped {
+  color: transparent;
+}
+
+.ghostRemain {
+  color: var(--text-subtle);
+  opacity: 0.55;
+}
+
+.cellWrong {
+  background: var(--error-soft);
+}
+
+.cellWrong .input {
+  color: var(--error);
+}
+
+.cellCorrect .input {
+  color: var(--text);
+}
+
+/* 현재 입력 중인 셀: 파란 테두리 강조.
+   오류 셀이 동시에 활성일 때도 테두리가 가장 잘 보이도록 우선순위를 높인다. */
+.cellActive {
+  box-shadow: inset 0 0 0 2px var(--accent);
+  z-index: 1;
+}
+
+.cellActive.cellWrong {
+  box-shadow: inset 0 0 0 2px var(--accent);
+  background: var(--error-soft);
+}
