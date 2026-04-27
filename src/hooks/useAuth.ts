@@ -3,7 +3,8 @@ import type { Session, User } from "@supabase/supabase-js";
 import {
   getCurrentSession,
   onAuthStateChange,
-  signInWithEmail as apiSignInWithEmail,
+  signInWithPassword as apiSignIn,
+  signUpWithPassword as apiSignUp,
   signOut as apiSignOut,
 } from "../lib/api/auth";
 import { isSupabaseConfigured } from "../lib/supabase/client";
@@ -13,9 +14,13 @@ export type AuthState = {
   loading: boolean;
   session: Session | null;
   user: User | null;
-  signInWithEmail: (email: string) => Promise<void>;
+  signIn: (email: string, password: string) => Promise<void>;
+  signUp: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
 };
+
+const NOT_CONFIGURED_MSG =
+  "Supabase 환경변수가 설정되지 않아 로그인을 사용할 수 없습니다.";
 
 export function useAuth(): AuthState {
   const configured = isSupabaseConfigured();
@@ -50,12 +55,18 @@ export function useAuth(): AuthState {
     };
   }, [configured]);
 
-  const signInWithEmail = useCallback(
-    async (email: string) => {
-      if (!configured) {
-        throw new Error("Supabase 환경변수가 설정되지 않아 로그인을 사용할 수 없습니다.");
-      }
-      await apiSignInWithEmail(email);
+  const signIn = useCallback(
+    async (email: string, password: string) => {
+      if (!configured) throw new Error(NOT_CONFIGURED_MSG);
+      await apiSignIn(email, password);
+    },
+    [configured]
+  );
+
+  const signUp = useCallback(
+    async (email: string, password: string) => {
+      if (!configured) throw new Error(NOT_CONFIGURED_MSG);
+      await apiSignUp(email, password);
     },
     [configured]
   );
@@ -70,7 +81,8 @@ export function useAuth(): AuthState {
     loading,
     session,
     user: session?.user ?? null,
-    signInWithEmail,
+    signIn,
+    signUp,
     signOut,
   };
 }

@@ -376,7 +376,8 @@ export default function App() {
         onClose={() => setAuthOpen(false)}
         configured={auth.configured}
         user={auth.user}
-        onSignInWithEmail={auth.signInWithEmail}
+        onSignIn={auth.signIn}
+        onSignUp={auth.signUp}
         onSignOut={auth.signOut}
       />
     </div>

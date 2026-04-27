@@ -96,6 +96,49 @@
   margin-top: 2px;
 }
 
+.labelHint {
+  font-size: 10px;
+  color: var(--text-subtle);
+  margin-left: 4px;
+  font-weight: 400;
+}
+
+.tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4px;
+}
+
+.tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 8px 6px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  margin-bottom: -1px;
+}
+
+.tab:hover {
+  color: var(--text);
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--accent-soft);
+  outline-offset: -2px;
+  border-radius: 2px;
+}
+
+.tabActive {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
 .input {
   width: 100%;
   padding: 8px 10px;
